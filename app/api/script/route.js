@@ -45,7 +45,7 @@ async function launchBrowser() {
             args: vercelChromium.args,
             defaultViewport: vercelChromium.defaultViewport,
             executablePath,
-            headless: false,
+            headless: vercelChromium.headless,
             ignoreHTTPSErrors: true,
             proxy
         });
