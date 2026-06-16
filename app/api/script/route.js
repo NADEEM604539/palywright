@@ -1,10 +1,19 @@
-import { chromium } from "playwright";
+import chromium from "@sparticuz/chromium";
+import { chromium as playwrightChromium } from "@sparticuz/playwright-core";
 
 export async function GET() {
 
-    const browser = await chromium.launch({
-        headless: false,
-        executablePath: chromium.executablePath()
+    let executablePath;
+    if (process.env.NODE_ENV === "production") {
+        executablePath = await chromium.executablePath();
+    } else {
+        executablePath = playwrightChromium.executablePath();
+    }
+
+    const browser = await playwrightChromium.launch({
+        args: chromium.args,
+        headless: true,
+        executablePath
     });
 
     try {
