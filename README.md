@@ -34,3 +34,17 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Qalam Scrape Setup
+
+The `/api/script` route uses Playwright to log in and read the Qalam gradebook.
+
+For reliable deployment on Vercel, set these environment variables:
+
+- `QALAM_LOGIN`
+- `QALAM_PASSWORD`
+- `QALAM_GRADEBOOK_URL` if you want to target a different course
+- `PLAYWRIGHT_WS_ENDPOINT` or `BROWSERLESS_WS_ENDPOINT` if you want to connect to a remote browser service
+- `HTTPS_PROXY` or `HTTP_PROXY` if you want to route traffic through a proxy
+
+If you do not provide a remote browser or proxy, the route may still be blocked by the target site or by the hosting IP.
