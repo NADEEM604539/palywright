@@ -3,7 +3,7 @@ import { chromium } from "playwright";
 export async function GET() {
 
     const browser = await chromium.launch({
-        headless: false,
+        headless: true,
         executablePath: chromium.executablePath()
     });
 
