@@ -3,7 +3,7 @@ import { chromium } from "playwright";
 export async function GET() {
 
     const browser = await chromium.launch({
-        headless: true,
+        headless: false,
         executablePath: chromium.executablePath()
     });
 
@@ -14,13 +14,9 @@ export async function GET() {
         await page.goto(
             "https://qalam.nust.edu.pk/web/login",
             {
-                waitUntil: "networkidle"
+                waitUntil: "domcontentloaded"
             }
         );
-
-        // Wait for form
-
-        await page.waitForSelector("#login");
 
         // Fill credentials
 
@@ -43,7 +39,7 @@ export async function GET() {
         // Wait until redirected
 
         await page.waitForLoadState(
-            "networkidle"
+            "domcontentloaded"
         );
 
         console.log(
